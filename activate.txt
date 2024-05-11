@@ -1,0 +1,14 @@
+# Install virtualenv if it's not installed
+pip install virtualenv
+
+# Create a virtual environment
+virtualenv venv
+
+# Activate the virtual environment
+# On Windows
+venv\Scripts\activate
+# On Unix or MacOS
+source venv/bin/activate
+
+# Install Required Libraries
+pip install torch torchvision pillow opencv-python pandas requests dill celery redis flask-socketio

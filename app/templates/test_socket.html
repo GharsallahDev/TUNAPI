@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Test</title>
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var socket = io(); // Connects to the default namespace
+
+            // Listen for the 'test_message' event
+            socket.on('test_message', function(data) {
+                console.log("Socket Test Message:", data.message);
+                alert("Received message: " + data.message);
+            });
+
+            // Button to trigger the server-side event
+            document.getElementById('sendTest').addEventListener('click', function() {
+                fetch('/test_socket')
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Socket.IO Test Page</h1>
+    <button id="sendTest">Send Test Message</button>
+</body>
+
+</html>
